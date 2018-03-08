@@ -3,11 +3,11 @@
 ### Modify the following code to use var, const, and let appropriately. Replace the underlines with either 'var', 'const', or 'let'
 
 ```js
-____ SPEED_OF_LIGHT = 299792458
+const SPEED_OF_LIGHT = 299792458
 
-____ speedArray = [55, 9.8, 1000000000, 186300]
+var speedArray = [55, 9.8, 1000000000, 186300]
 
-for (____ i = 0; i < speedArray.length; i++) {
+for (let i = 0; i < speedArray.length; i++) {
   if (speedArray[i] > SPEED_OF_LIGHT) {
     console.log("Faster than light")
   } else {
@@ -21,6 +21,7 @@ for (____ i = 0; i < speedArray.length; i++) {
 ```js
 const foo = 5;
 foo = 6;
+// foo has already been assigned as a constant
 ```
 ```js
 var foo = 5;
@@ -30,6 +31,7 @@ if (foo > 3) {
 }
 console.log(foo);
 console.log(bar);
+// foo will come back as 10 because foo is global, but bar will error out because let bar is block scoped
 ```
 ```js
 const farge = {
@@ -37,27 +39,34 @@ const farge = {
   prop2: "two",
   prop3: "three"
 }
-farge = {newProp: "new"};  // Error?
-farge.prop1 = "forty-two"; // Error?
-farge.propX = "ex";        // Error?
-delete farge.propX;        // Error?
-console.log(farge);
+farge = {newProp: "new"};  // error, cannot assign a new object to farge
+farge.prop1 = "forty-two"; // no error, reassigns prop1 with value of "forty-two"
+farge.propX = "ex";        // no error, adds new key: value pair to object
+delete farge.propX;        // no error, deletes that just added new key: value pair,
+console.log(farge);        // then console logs the array as it originally was
 ```
 
 ### Rewrite the following functions using arrow functions
 
 ```js
-var adder = function(a, b) {
-  return a + b;
-}
+// var adder = function(a, b) {
+//   return a + b;
+// }
+adder = (a, b) => a + b;
 ```
 ```js
-function printFarge() {
-  console.log('farge');
-}
+// function printFarge() {
+//   console.log('farge');
+// }
+printFarge = () => console.log('farge');
 ```
 ```js
-var cleanTheString = function(str) {
+// var cleanTheString = function(str) {
+//   let newStr = str.replace(/\s/g, '');
+//   newStr = newStr.toUpperCase();
+//   return newStr;
+// }
+cleanTheString = str => {
   let newStr = str.replace(/\s/g, '');
   newStr = newStr.toUpperCase();
   return newStr;
@@ -76,6 +85,12 @@ var widget = {
   length: length,
   style: style
 }
+
+var widget = {
+  color,
+  length,
+  style
+}
 ```
 
 ### Use String Literals to make the following code more readable
@@ -85,7 +100,9 @@ var name = "Paco";
 var location = "Nogales";
 var food = "steak";
 
-var bio = name + " is from " + location + " and really likes to eat " + food;
+// var bio = name + " is from " + location + " and really likes to eat " + food;
+
+var bio = `${name} is from ${location} and really likes to eat ${food}`;
 ```
 
 ### The blocks below represent two separate files. Write out the statements needed to use the function from the first file in the code in the second file
@@ -96,11 +113,11 @@ var hello = function(name) {
   console.log(`Hello, ${name}!`);
 }
 // Add your code here...
-
+export default hello
 ```
 ```js
 // This is in main.js
 // Add your code here...
-
+import hello from './hello'
 hello("Siouxsie");
 ```
