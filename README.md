@@ -62,9 +62,7 @@ var adder = function(a, b) {
 }
 
 //new code
-adder = (a,b) => {
-  return a + b;
-}
+adder = (a,b) => a + b
 
 ```
 ```js
@@ -74,9 +72,8 @@ function printFarge() {
 }
 
 //new code
-printFarge = () => {
-  console.log('farge');
-}
+printFarge = () => console.log('farge')
+
 
 ```
 ```js
