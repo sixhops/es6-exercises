@@ -43,7 +43,7 @@ const farge = {
   prop2: "two",
   prop3: "three"
 }
-farge = {newProp: "new"};  // Error? ~~~ NO ERROR
+farge = {newProp: "new"};  // Error? ~~~ ERROR because you're resetting to a new object
 farge.prop1 = "forty-two"; // Error? ~~~ NO ERROR
 farge.propX = "ex";        // Error? ~~~ NO ERROR
 delete farge.propX;        // Error? ~~~ NO ERROR
