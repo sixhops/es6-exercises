@@ -128,11 +128,14 @@ var bio =  `${name} is from ${location} and really likes to eat ${food}`;
 
 ### The blocks below represent two separate files. Write out the statements needed to use the function from the first file in the code in the second file
 
+I think this is what you are looking for here, sorry if I'm mistaken.
+
 ```js
 // This is in hello.js
 var hello = function(name) {
   console.log(`Hello, ${name}!`);
 }
+
 // Add your code here...
 export default hello;
 ```
@@ -140,5 +143,6 @@ export default hello;
 // This is in main.js
 // Add your code here...
 import hello from './hello.js' //assuming in the same folder
+
 hello("Siouxsie");
 ```
