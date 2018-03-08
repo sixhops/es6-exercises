@@ -7,13 +7,14 @@ const SPEED_OF_LIGHT = 299792458
 
 var speedArray = [55, 9.8, 1000000000, 186300]
 
-for (var i = 0; i < speedArray.length; i++) {
+for (let i = 0; i < speedArray.length; i++) {
   if (speedArray[i] > SPEED_OF_LIGHT) {
     console.log("Faster than light")
   } else {
     console.log("Sub-light speed")
   }
 }
+console.log(i) // => 3
 ```
 
 ### What errors will the following code blocks produce? Why?
