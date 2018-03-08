@@ -3,11 +3,11 @@
 ### Modify the following code to use var, const, and let appropriately. Replace the underlines with either 'var', 'const', or 'let'
 
 ```js
-____ SPEED_OF_LIGHT = 299792458
+const SPEED_OF_LIGHT = 299792458
 
-____ speedArray = [55, 9.8, 1000000000, 186300]
+var speedArray = [55, 9.8, 1000000000, 186300]
 
-for (____ i = 0; i < speedArray.length; i++) {
+for (let i = 0; i < speedArray.length; i++) {
   if (speedArray[i] > SPEED_OF_LIGHT) {
     console.log("Faster than light")
   } else {
@@ -22,6 +22,8 @@ for (____ i = 0; i < speedArray.length; i++) {
 const foo = 5;
 foo = 6;
 ```
+// Unable to reassign constant variable because const is an immutable variable.
+
 ```js
 var foo = 5;
 if (foo > 3) {
@@ -31,18 +33,22 @@ if (foo > 3) {
 console.log(foo);
 console.log(bar);
 ```
+// bar is undefined. bar is block scoped since it was declared using let within the if block.
+
+
 ```js
 const farge = {
   prop1: "one",
   prop2: "two",
   prop3: "three"
 }
-farge = {newProp: "new"};  // Error?
-farge.prop1 = "forty-two"; // Error?
-farge.propX = "ex";        // Error?
-delete farge.propX;        // Error?
+farge = {newProp: "new"};  // Error? Yes, cannot reassign the variable
+farge.prop1 = "forty-two"; // Error? No, you can update a key-value pair
+farge.propX = "ex";        // Error? No, you can add a key-value pair with dot notation
+delete farge.propX;        // Error? No, you can delete key-value pair
 console.log(farge);
 ```
+
 
 ### Rewrite the following functions using arrow functions
 
@@ -51,11 +57,15 @@ var adder = function(a, b) {
   return a + b;
 }
 ```
+// var adder = (a, b) => a + b;
+
 ```js
 function printFarge() {
   console.log('farge');
 }
 ```
+// var printFarge = () => console.log('farge');
+
 ```js
 var cleanTheString = function(str) {
   let newStr = str.replace(/\s/g, '');
@@ -63,6 +73,11 @@ var cleanTheString = function(str) {
   return newStr;
 }
 ```
+// var cleanTheString = str => {
+  let newStr = str.replace(/\s/g, '');
+  newStr = newStr.toUpperCase();
+  return newStr;
+};
 
 ### Use Object Literal shorthand to clean up the following code
 
@@ -77,6 +92,7 @@ var widget = {
   style: style
 }
 ```
+// var widget = { color, length, style }
 
 ### Use String Literals to make the following code more readable
 
@@ -87,6 +103,7 @@ var food = "steak";
 
 var bio = name + " is from " + location + " and really likes to eat " + food;
 ```
+// var bio = `${name} is from ${location} and really likes to eat ${food}`;
 
 ### The blocks below represent two separate files. Write out the statements needed to use the function from the first file in the code in the second file
 
@@ -95,12 +112,12 @@ var bio = name + " is from " + location + " and really likes to eat " + food;
 var hello = function(name) {
   console.log(`Hello, ${name}!`);
 }
-// Add your code here...
-
+export default hello;
 ```
 ```js
 // This is in main.js
 // Add your code here...
+import hello from './hello'
 
 hello("Siouxsie");
 ```
