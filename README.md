@@ -46,9 +46,9 @@ const farge = {
 farge = {newProp: "new"};  
 // this should work correctly and set the value as a "forty-two"
 farge.prop1 = "forty-two";
-//this will not work. propX is not a valid property within the const object farge.
+//this will work it's adding a new property
 farge.propX = "ex";      
-//this will not work. propX is not a valid property. therefore, we can't delete it.  
+//this will work since we just added this new property
 delete farge.propX;      
 console.log(farge);
 ```
