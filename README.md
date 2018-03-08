@@ -22,7 +22,7 @@ for (let i = 0; i < speedArray.length; i++) {
 const foo = 5;
 foo = 6;
 ```
-const cannot be changed so reassigning foo to a value of 6 will error out. It will always equal 5.
+const cannot be changed once it is declared, so reassigning foo to a value of 6 will error out.
 
 ```js
 var foo = 5;
