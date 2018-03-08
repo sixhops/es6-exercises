@@ -149,7 +149,7 @@ export default hello;
 
 ```
 ```js
-import hello from './Hello';
+import hello from './hello';
 // This is in main.js
 // Add your code here...
 
