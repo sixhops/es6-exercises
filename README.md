@@ -88,6 +88,47 @@ var food = "steak";
 var bio = name + " is from " + location + " and really likes to eat " + food;
 ```
 
+### Use Array Spread syntax to concatenate two arrays
+
+```js
+var myArray = ['red', 'orange', 'yellow'];
+var yourArray = ['green', 'blue', 'violet'];
+// Finish the line below...
+var ourArray = ;
+```
+
+### Use Array Spread syntax to unpack an array into function parameters
+
+```js
+var numbers = [5, 10, 15];
+
+var addNumbers = function(a, b, c) {
+  return a + b + c;
+};
+
+// Call the function below using array spread syntax to pass in the parameters
+var result = addNumbers();
+```
+
+### Use the following Promise. Call it, then use the .then callback to print "Hello, " plus the Promise's return value when the Promise successfully completes
+
+```js
+var promise1 = new Promise(function(resolve, reject) {
+  setTimeout(function() {resolve('Nick')}, 1000);
+});
+
+// Enter your code here...
+```
+
+### Use array destructuring to feed the given array's first 3 values into the given variables
+
+```js
+var hobbits = ['Pippin', 'Meriadoc', 'Frodo', 'Bilbo', 'Samwise'];
+var theTook, theBrandybuck, theBaggins;
+
+// Enter your code here...
+```
+
 ### The blocks below represent two separate files. Write out the statements needed to use the function from the first file in the code in the second file
 
 ```js
