@@ -3,11 +3,11 @@
 ### Modify the following code to use var, const, and let appropriately. Replace the underlines with either 'var', 'const', or 'let'
 
 ```js
-____ SPEED_OF_LIGHT = 299792458
+const SPEED_OF_LIGHT = 299792458
 
-____ speedArray = [55, 9.8, 1000000000, 186300]
+var speedArray = [55, 9.8, 1000000000, 186300]
 
-for (____ i = 0; i < speedArray.length; i++) {
+for (let i = 0; i < speedArray.length; i++) {
   if (speedArray[i] > SPEED_OF_LIGHT) {
     console.log("Faster than light")
   } else {
@@ -22,6 +22,8 @@ for (____ i = 0; i < speedArray.length; i++) {
 const foo = 5;
 foo = 6;
 ```
+const cannot be changed once it is declared, so reassigning foo to a value of 6 will error out.
+
 ```js
 var foo = 5;
 if (foo > 3) {
@@ -31,17 +33,20 @@ if (foo > 3) {
 console.log(foo);
 console.log(bar);
 ```
+bar is only defined within the code block of the if statement, so console logging bar outside the code block will throw an error. Function closure causes bar to be unavailable at the console.log.
+
+
 ```js
 const farge = {
   prop1: "one",
   prop2: "two",
   prop3: "three"
 }
-farge = {newProp: "new"};  // Error?
-farge.prop1 = "forty-two"; // Error?
-farge.propX = "ex";        // Error?
-delete farge.propX;        // Error?
-console.log(farge);
+farge = {newProp: "new"};  // You can't replace the whole object since farge was stated in a const
+farge.prop1 = "forty-two"; // no error
+farge.propX = "ex";        // no error, adds key:value pair to the farge object
+delete farge.propX;        // no error, removes the propx key:value pair from the object
+console.log(farge);        
 ```
 
 ### Rewrite the following functions using arrow functions
@@ -51,18 +56,28 @@ var adder = function(a, b) {
   return a + b;
 }
 ```
+var adder = (a, b) => a + b;
+
+
 ```js
 function printFarge() {
   console.log('farge');
 }
 ```
+printFarge = () => console.log('farge');
+
+
 ```js
 var cleanTheString = function(str) {
   let newStr = str.replace(/\s/g, '');
   newStr = newStr.toUpperCase();
   return newStr;
 }
+
 ```
+var cleanTheString = str => { let newStr = str.replace(/\s/g, ''); newStr = newStr.toUpperCase(); return newStr; }
+
+
 
 ### Use Object Literal shorthand to clean up the following code
 
@@ -78,6 +93,12 @@ var widget = {
 }
 ```
 
+var widget = {
+  color,
+  length,
+  style
+}
+
 ### Use String Literals to make the following code more readable
 
 ```js
@@ -87,6 +108,8 @@ var food = "steak";
 
 var bio = name + " is from " + location + " and really likes to eat " + food;
 ```
+var bio = `${name} is from ${location} and really likes to eat ${food}`;
+
 
 ### Use Array Spread syntax to concatenate two arrays
 
@@ -137,11 +160,11 @@ var hello = function(name) {
   console.log(`Hello, ${name}!`);
 }
 // Add your code here...
-
+export default hello;
 ```
 ```js
 // This is in main.js
 // Add your code here...
-
+import hello from './hello';
 hello("Siouxsie");
 ```
