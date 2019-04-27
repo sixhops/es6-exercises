@@ -3,11 +3,11 @@
 ### Modify the following code to use var, const, and let appropriately. Replace the underlines with either 'var', 'const', or 'let'
 
 ```js
-____ SPEED_OF_LIGHT = 299792458
+const SPEED_OF_LIGHT = 299792458
 
-____ speedArray = [55, 9.8, 1000000000, 186300]
+var speedArray = [55, 9.8, 1000000000, 186300]
 
-for (____ i = 0; i < speedArray.length; i++) {
+for (let i = 0; i < speedArray.length; i++) {
   if (speedArray[i] > SPEED_OF_LIGHT) {
     console.log("Faster than light")
   } else {
@@ -21,6 +21,9 @@ for (____ i = 0; i < speedArray.length; i++) {
 ```js
 const foo = 5;
 foo = 6;
+// ANSWER \\//
+// you cannot reassaign the value of a const variable
+// //\\
 ```
 ```js
 var foo = 5;
@@ -30,6 +33,9 @@ if (foo > 3) {
 }
 console.log(foo);
 console.log(bar);
+// ANSWER \\//
+// let is block scope so it cannot be read on the global level
+// //\\
 ```
 ```js
 const farge = {
@@ -37,10 +43,10 @@ const farge = {
   prop2: "two",
   prop3: "three"
 }
-farge = {newProp: "new"};  // Error?
-farge.prop1 = "forty-two"; // Error?
-farge.propX = "ex";        // Error?
-delete farge.propX;        // Error?
+farge = {newProp: "new"};  // Error? ~~~ ERROR because you're resetting to a new object
+farge.prop1 = "forty-two"; // Error? ~~~ NO ERROR
+farge.propX = "ex";        // Error? ~~~ NO ERROR
+delete farge.propX;        // Error? ~~~ NO ERROR
 console.log(farge);
 ```
 
@@ -50,11 +56,17 @@ console.log(farge);
 var adder = function(a, b) {
   return a + b;
 }
+// ANSWER \\//
+adder (a, b) => a + b;
+// //\\
 ```
 ```js
 function printFarge() {
   console.log('farge');
 }
+// ANSWER \\//
+printFarge () => console.log('farge');
+// //\\
 ```
 ```js
 var cleanTheString = function(str) {
@@ -62,6 +74,13 @@ var cleanTheString = function(str) {
   newStr = newStr.toUpperCase();
   return newStr;
 }
+// ANSWER \\//
+cleanTheString str => {
+  let newStr = str.replace(/\s/g, '');
+  newStr = newStr.toUpperCase();
+  return newStr;
+}
+// //\\
 ```
 
 ### Use Object Literal shorthand to clean up the following code
@@ -76,6 +95,17 @@ var widget = {
   length: length,
   style: style
 }
+// ANSWER \\//
+var color = "blue";
+var length = 14;
+var style = "Flamenco";
+
+var widget = {
+  color,
+  length,
+  style
+}
+// //\\
 ```
 
 ### Use String Literals to make the following code more readable
@@ -86,6 +116,13 @@ var location = "Nogales";
 var food = "steak";
 
 var bio = name + " is from " + location + " and really likes to eat " + food;
+// ANSWER \\//
+var name = "Paco";
+var location = "Nogales";
+var food = "steak";
+
+var bio = `${name} is from ${location} and realy likes to eat ${food}`;
+// //\\
 ```
 
 ### Use Array Spread syntax to concatenate two arrays
@@ -137,11 +174,13 @@ var hello = function(name) {
   console.log(`Hello, ${name}!`);
 }
 // Add your code here...
+export default hello;
 
 ```
 ```js
 // This is in main.js
 // Add your code here...
+import hello from './hello';
 
 hello("Siouxsie");
 ```
