@@ -3,11 +3,11 @@
 ### Modify the following code to use var, const, and let appropriately. Replace the underlines with either 'var', 'const', or 'let'
 
 ```js
-____ SPEED_OF_LIGHT = 299792458
+const SPEED_OF_LIGHT = 299792458
 
-____ speedArray = [55, 9.8, 1000000000, 186300]
+var speedArray = [55, 9.8, 1000000000, 186300]
 
-for (____ i = 0; i < speedArray.length; i++) {
+for (let i = 0; i < speedArray.length; i++) {
   if (speedArray[i] > SPEED_OF_LIGHT) {
     console.log("Faster than light")
   } else {
@@ -22,6 +22,9 @@ for (____ i = 0; i < speedArray.length; i++) {
 const foo = 5;
 foo = 6;
 ```
+
+ERROR: attempting to reassign a value to a constant... you are denied!
+
 ```js
 var foo = 5;
 if (foo > 3) {
@@ -31,16 +34,19 @@ if (foo > 3) {
 console.log(foo);
 console.log(bar);
 ```
+
+ERROR: bar has function scope and cannot be accessed outside of the function block.
+
 ```js
 const farge = {
   prop1: "one",
   prop2: "two",
   prop3: "three"
 }
-farge = {newProp: "new"};  // Error?
-farge.prop1 = "forty-two"; // Error?
-farge.propX = "ex";        // Error?
-delete farge.propX;        // Error?
+farge = {newProp: "new"};  // ERROR: you are not allow to assign a new property to an Object
+farge.prop1 = "forty-two"; // ERROR: cannot reassign value because farge is a CONST (is not capitalized)
+farge.propX = "ex";        // ERROR: propX is not defined
+delete farge.propX;        // ERROR: propX does not exist
 console.log(farge);
 ```
 
@@ -50,9 +56,19 @@ console.log(farge);
 var adder = function(a, b) {
   return a + b;
 }
+
+// SOLUTION
+adder = (a,b) => {
+  return a + b;
+}
 ```
 ```js
 function printFarge() {
+  console.log('farge');
+}
+
+// SOLUTION
+printFarge = farge => {
   console.log('farge');
 }
 ```
@@ -61,6 +77,13 @@ var cleanTheString = function(str) {
   let newStr = str.replace(/\s/g, '');
   newStr = newStr.toUpperCase();
   return newStr;
+}
+
+// SOLUTION
+cleanTheString = str => {
+  let newStr = str.replace(/\s/g, '');
+  newStr = newStr.toUpperCase();
+  return  newStr;
 }
 ```
 
@@ -76,6 +99,17 @@ var widget = {
   length: length,
   style: style
 }
+
+// SOLUTION
+var color = "blue";
+var length = 14;
+var style = "Flamenco";
+
+var widget = {
+  color,
+  length,
+  style
+}
 ```
 
 ### Use String Literals to make the following code more readable
@@ -86,6 +120,10 @@ var location = "Nogales";
 var food = "steak";
 
 var bio = name + " is from " + location + " and really likes to eat " + food;
+
+// SOLUTION
+var bio =  `${name} is from ${location} and really likes to eat ${food}`;
+
 ```
 
 ### Use Array Spread syntax to concatenate two arrays
@@ -137,11 +175,13 @@ var hello = function(name) {
   console.log(`Hello, ${name}!`);
 }
 // Add your code here...
-
+export default hello;
 ```
+
 ```js
 // This is in main.js
 // Add your code here...
+import hello from './hello.js' //assuming in the same folder
 
 hello("Siouxsie");
 ```
